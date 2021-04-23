@@ -1,0 +1,47 @@
+/* 字体图标 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/iconfont.eot');
+  src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), url('../fonts/iconfont.woff') format('woff'), url('../fonts/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MainContainer {
+  /* min-width: 960px; */
+  min-width: 960px;
+  max-width: 1600px;
+}
+
+.sidebar {
+  /* width: 180px; */
+  width: 211px;
+  float: left;
+  margin-right: -211px;
+  border-right: 1px solid #ccc;
+  min-height: 500px;
+  /* padding: 5px; */
+  padding: 30px 0 0 35px;
+}
+
+.main {
+  /* float: left; */
+  /* width: 100%; */
+  position: fixed;
+  top: 36px;
+  left: 410px;
+  width: 100%;
+  /* margin-left: 266px;
+  margin-top: 36px; */
+  padding: 5px;
+}
+
+.content {
+  padding: 0 10px;
+}

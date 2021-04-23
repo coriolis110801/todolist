@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todoist</title>
+  <!-- 去除浏览器的默认样式 -->
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="/static/css/sidebar.css">
+</head>
+
+<body onkeydown="keySubmit();">
+  <div class="page">
+    <div class="MainContainer">
+      <div id="sidebar" class="sidebar">
+        <!-- 边栏 -->
+        <!-- 项目标题 -->
+          <div class="projectTitle">
+            <div class="project">
+              <div class="jiantou"></div>
+              <div class="project-title">项目</div>
+              <div class="jia-icon"><span class="iconfont icon-jiahao jia">&#xe618;</span></div>
+            </div>
+            <!-- 项目项 -->
+            <div class="project-contain">
+              {% for o in obj %}
+              
+                {% if o.id|string() == id|string() %}
+
+                 <div class="project-item black">
+                {% else %}
+                <div class="project-item" onclick=goLine({{o.id}})>
+                {% endif %}
+                
+                  <div class="spot-icon"></div>
+                  <div class="project-name" >{{o.title}}</div>
+                    <div class="project-del projectDel" onclick=removePro({{o.id}})>删除</div>
+                  <!--<div class="task-circle" style="float: right;color:red" onclick=removePro({{o.id}})>删除</div>-->
+                </div>
+              {% endfor %}
+              
+            
+            </div>
+            
+      </div>
+      <div id="main" class="main">
+        <div class="page">
+          <!-- 标题 -->
+          <div class="title">
+              <div class="text-contain">
+                  <span class="title-text">{{title}}</span>
+              </div>
+              <div class="title-input">
+                  <input id="titleInp" type="text" name="" id="" value="">
+                  <div class="btn">
+                      <button class="save">保存</button>
+                      <button class="cancel">取消</button>
+                  </div>
+              </div>
+          </div>
+      
+          <!-- 任务 -->
+          <div class="task" id="task">
+            {% for o in lines %}
+              <div class="task-item">
+                  <div id="showtask{{o.id}}">
+                      <div class="task-circle" onclick=removeItem({{o.id}})><div class="iconfont dui-icon duiClick"></div></div>
+                      <div class="task-text">{{o.data}}</div>
+                      <div class="task-text" style="margin-left: 200px;">{{o.ctime}}</div>
+    <!--                  <div class="task-text" onclick=editItem({{o.id}},'{{o.data}}') style="float: right;">编辑</div>
+                      <div class="task-text editbtn" data-id="{{o.id}}" style="float: right;">编辑</div>-->
+                      <div class="task-add editbtn"  data-id="{{o.id}}">
+                        <span class="iconfont" id="taskAdd{{o.id}}"></span>
+                      </div>
+                  </div>
+                  <div class="add-task" id="addTask{{o.id}}" style="display:none;">
+                      <input class="add-inp" type="text" name="" id="addTaskInp{{o.id}}" value="{{o.data}}">
+                      <div class="add-task-btn-contain">
+                          <button class="add-task-btn" id="addTaskBtn{{o.id}}" onclick=editItemNew({{o.id}}) style="background-color: rgb(216, 73, 66);">修改任务</button>
+                          <button class="add-cancel-btn hideedit" data-id="{{o.id}}">取消</button>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+
+              <div class="task-item">
+              
+                <div class="task-add">
+                    <span class="iconfont" id="taskAdd">&#xe606;</span>
+                </div>
+            </div>
+
+          </div>
+          <!-- 添加任务 -->
+          <div class="add-task-contain">
+              <div class="add-btn" id="addBtn">
+                  <span class="iconfont jiao-icon"> &#xe618; </span>
+                  <div class="add-text">添加任务</div>
+              </div>
+      
+              <!-- 添加任务 输入 -->
+              <div class="add-task" id="addTask">
+                  <input class="add-inp" type="text" name="" id="addTaskInp" placeholder="列如：周日上午11点家庭聚餐">
+                  <input type="hidden" id="addTaskPjid" value='{{id}}'>
+
+                  <div class="add-task-btn-contain">
+                      <button class="add-task-btn" id="addTaskBtn">添加任务</button>
+                      <button class="add-cancel-btn" id="addCancelBtn">取消</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="addprojectHtml" style="display: none;">
+    <div style="margin:20px 0px 0px 20px">
+    <span class="project-name">项目名</span> &nbsp;
+    <input type="text" name="" id="projectVal">
+    </div>
+  </div>
+
+  <!-- jq -->
+  <script src="/static/js/jquery-3.6.0.min.js"></script>
+  <!-- layui -->
+  <script src="/static/js/layer/layer.js"></script>
+  <script src="/static/index.js"></script>
+
+</body>
+
+</html>

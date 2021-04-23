@@ -1,0 +1,12 @@
+/* 添加项目 */
+.addProject {
+  padding: 10px;
+}
+
+.addProject .project-name {
+  font-weight: 600;
+}
+
+.btn {
+  margin-top: 20px;
+}
